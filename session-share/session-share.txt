@@ -1,0 +1,5 @@
+集群如何实现session共享？
+1. 搭建一个redis集群，将用户信息存储在redis中，而非传统的session中
+2. 用户登录时，将session id（或者其他方式生成的token，每个用户唯一标识即可），写入cookie
+3. 以token为基准的key，用户信息以json形式存储在redis中
+4. 写一个拦截器，用于判断用户是否登录，并expire当前用户的token

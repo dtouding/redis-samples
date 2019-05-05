@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: session-share
+  thymeleaf:
+    prefix: classpath:/static/html/
+    suffix: .html
+    servlet:
+      content-type: text/html
+    encoding: UTF-8
+    mode: HTML5
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/novel?characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    tomcat:
+      max-active: 2
+      max-wait: 60000
+      initial-size: 1
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 'dtouding'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+
+##mybatis.#
+mybatis:
+  type-aliases-package: com.dtouding.samples.pojo
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 30
+  mapper-locations: classpath:com/dtouding/samples/dao/*.xml
+logging:
+  level:
+    com.dtouding.samples.dao: debug
+
+server:
+  port: 8080
