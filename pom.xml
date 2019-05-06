@@ -11,6 +11,7 @@
     <modules>
         <module>session-share</module>
         <module>common</module>
+        <module>redis-distribution</module>
     </modules>
 
     <parent>
